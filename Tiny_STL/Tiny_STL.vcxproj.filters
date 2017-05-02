@@ -14,4 +14,20 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="vector.h">
+      <Filter>资源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="allocator.h">
+      <Filter>资源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="alloc.h">
+      <Filter>资源文件</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

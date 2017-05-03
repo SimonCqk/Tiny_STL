@@ -5,9 +5,9 @@
 #include<cstdlib>
 #include<iostream>
 namespace Tiny_STL {
-	/*
-	**空间内存分配器，以字节数为单位
-	*/
+
+	 // 空间内存分配器，以字节数为单位
+
 	class alloc {
 	private:
 		//不同内存块的上调大小

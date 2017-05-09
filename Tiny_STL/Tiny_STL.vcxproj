@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClInclude Include="alloc.h" />
     <ClInclude Include="allocator.h" />
+    <ClInclude Include="functional.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

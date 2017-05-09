@@ -3,10 +3,6 @@
 #define FUCNTIONAL_H
 #include<string>
 #include<numeric>
-//待替换为自己的版本
-#include<vector>
-#include<list>
-#include<deque>
 
 namespace Tiny_STL {
 

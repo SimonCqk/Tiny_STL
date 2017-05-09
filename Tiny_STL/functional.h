@@ -1,6 +1,6 @@
 #pragma once
 #ifndef FUNCTIONAL_H
-#define FUCNTIONAL_H
+#define FUNCTIONAL_H
 #include<string>
 #include<numeric>
 

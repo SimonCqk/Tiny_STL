@@ -27,5 +27,8 @@
     <ClInclude Include="functional.h">
       <Filter>资源文件</Filter>
     </ClInclude>
+    <ClInclude Include="memory.h">
+      <Filter>资源文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

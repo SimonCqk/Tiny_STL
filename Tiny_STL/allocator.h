@@ -62,7 +62,7 @@ namespace Tiny_STL {
 	inline void allocator<T>::construct(T *ptr) {
 		new(static_cast<void *>(ptr))T();
 	}
-	//可传入拓展包对象，并且接受任意类型(universal ref)
+	//并且接受任意类型(universal ref)
 	template<typename T>
 	void allocator<T>::construct(T *ptr,T&& value) {
 		new(static_cast<void *>(ptr))T(std::forward<T>(value));

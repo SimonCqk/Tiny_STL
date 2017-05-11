@@ -1,16 +1,12 @@
 #pragma once
 #ifndef FUNCTIONAL_H
-#define FUCNTIONAL_H
+#define FUNCTIONAL_H
 #include<string>
 #include<numeric>
-//´ıÌæ»»Îª×Ô¼ºµÄ°æ±¾
-#include<vector>
-#include<list>
-#include<deque>
 
 namespace Tiny_STL {
 
-	//¶¨ÒåÒ»ÔªÎ½´Ê²ÎÊı¼°·µ»ØÖµÀàĞÍ
+	//å®šä¹‰ä¸€å…ƒè°“è¯å‚æ•°åŠè¿”å›å€¼ç±»å‹
 	template<typename Args, typename Result>
 	struct Unary_Func
 	{
@@ -18,7 +14,7 @@ namespace Tiny_STL {
 		typedef Result		result_type;
 	};
 
-	//¶¨ÒåÒ»ÔªÎ½´Ê²ÎÊı¼°·µ»ØÖµÀàĞÍ
+	//å®šä¹‰äºŒå…ƒè°“è¯å‚æ•°åŠè¿”å›å€¼ç±»å‹
 	template<typename Arg_one, typename Arg_two, typename Result>
 	struct Binary_Func
 	{
@@ -27,48 +23,48 @@ namespace Tiny_STL {
 		typedef Result			result_type;
 	};
 
-	//¼Ó·¨
+	//åŠ æ³•
 	template<typename T>
 	struct plus :public Binary_Func<T, T, T>
 	{
 		constexpr T operator () (const T& lhs, const T& rhs) const { return lhs + rhs; }
 	};
-	//¼õ·¨
+	//å‡æ³•
 	template<typename T>
 	struct minus :public Binary_Func<T, T, T>
 	{
 		constexpr T operator () (const T& lhs, const T& rhs) const { return lhs - rhs; }
 	};
 
-	// ³Ë·¨
+	// ä¹˜æ³•
 	template <typename T>
 	struct multiplies :public Binary_Func<T, T, T>
 	{
 		constexpr T operator()(const T& lhs, const T& rhs) const { return lhs * rhs; }
 	};
 
-	// ³ı·¨
+	// é™¤æ³•
 	template <typename T>
 	struct divides :public Binary_Func<T, T, T>
 	{
 		constexpr T operator()(const T& lhs, const T& rhs) const { return lhs / rhs; }
 	};
 
-	// È¡Ä£
+	// å–æ¨¡
 	template <typename T>
 	struct modulus :public Binary_Func<T, T, T>
 	{
 		constexpr T operator()(const T& lhs, const T& rhs) const { return lhs % rhs; }
 	};
 
-	// ¸ºÊı
+	// è´Ÿæ•°
 	template <typename T>
 	struct negate :public Unary_Func<T, T>
 	{
 		constexpr T operator()(const T& x) const { return -x; }
 	};
 
-	// ²»µÈÓÚ
+	// ä¸ç­‰äº
 	template <typename T>
 	struct not_equal_to :public Binary_Func<T, T, T>
 	{
@@ -77,7 +73,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//´óÓÚ
+	//å¤§äº
 	template <typename T>
 	struct greater :public Binary_Func<T, T, T>
 	{
@@ -86,7 +82,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//´óÓÚµÈÓÚ
+	//å¤§äºç­‰äº
 	template <typename T>
 	struct greater_equal :public Binary_Func<T, T, T>
 	{
@@ -95,7 +91,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//Ğ¡ÓÚ
+	//å°äº
 	template <typename T>
 	struct less :public Binary_Func<T, T, T>
 	{
@@ -104,7 +100,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//Ğ¡ÓÚµÈÓÚ
+	//å°äºç­‰äº
 	template <typename T>
 	struct less_equal :public Binary_Func<T, T, T>
 	{
@@ -113,7 +109,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//Âß¼­ÇÒ
+	//é€»è¾‘ä¸”
 	template <typename T>
 	struct logical_and :public Binary_Func<T, T, T>
 	{
@@ -122,7 +118,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//Âß¼­»ò
+	//é€»è¾‘æˆ–
 	template <typename T>
 	struct logical_or :public Binary_Func<T, T, T>
 	{
@@ -131,7 +127,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//Âß¼­·Ç
+	//é€»è¾‘é
 	template <typename T>
 	struct logical_not :public Unary_Func<T, T>
 	{
@@ -140,7 +136,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//Î»ÔËËã Óë
+	//ä½è¿ç®— ä¸
 	template <typename T>
 	struct bit_and :public Binary_Func<T, T, T>
 	{
@@ -149,7 +145,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//Î»ÔËËã »ò
+	//ä½è¿ç®— æˆ–
 	template <typename T>
 	struct bit_or :public Binary_Func<T, T, T>
 	{
@@ -158,7 +154,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//Î»ÔËËã Òì»ò
+	//ä½è¿ç®— å¼‚æˆ–
 	template <typename T>
 	struct bit_xor :public Binary_Func<T, T, T>
 	{
@@ -167,7 +163,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//Î»ÔËËã ·Ç
+	//ä½è¿ç®— é
 	template <typename T>
 	struct bit_not :public Unary_Func<T, T>
 	{
@@ -176,16 +172,16 @@ namespace Tiny_STL {
 		}
 	};
 
-	//¹şÏ£º¯Êı
+	//å“ˆå¸Œå‡½æ•°
 	template<typename T>
 	struct hash : public Unary_Func<T, size_t>
 	{
-		//¶ÔÓÚ´ó¶àÊıÀàĞÍ£¬hashÎŞ²Ù×÷
-		//ÌØ¶¨ÀàĞÍÍ¨¹ıÆ«ÌØ»¯ÊµÏÖ
+		//å¯¹äºå¤§å¤šæ•°ç±»å‹ï¼Œhashæ— æ“ä½œ
+		//ç‰¹å®šç±»å‹é€šè¿‡åç‰¹åŒ–å®ç°
 	};
 
-	//stackoverflowÉÏ¿´µ½µÄ@Paul LarsonµÄÒ»¸öhashtableÊµÏÖº¯Êı
-	//ĞÔÄÜ²¢²»¸ßµ«ÊÇ×ã¹»¼òµ¥ÊµÓÃ£¬Õë¶Ôchar*ºÍconst char*(string)°æ±¾
+	//stackoverflowä¸Šçœ‹åˆ°çš„@Paul Larsonçš„ä¸€ä¸ªhashtableå®ç°å‡½æ•°
+	//æ€§èƒ½å¹¶ä¸é«˜ä½†æ˜¯è¶³å¤Ÿç®€å•å®ç”¨ï¼Œé’ˆå¯¹char*å’Œconst char*(string)ç‰ˆæœ¬
 	size_t Hash_Seq_str(const char* s, size_t seed = 0)
 	{
 		size_t HASH = seed;
@@ -210,7 +206,7 @@ namespace Tiny_STL {
 	{
 		size_t operator()(const std::string& str) const { return Hash_Seq_str(str.data()); }
 	};
-	//¶ÔÓÚÒ»Ğ©»ù±¾ÕûĞÍ£¬·µ»ØÖµ±¾Éí
+	//å¯¹äºä¸€äº›åŸºæœ¬æ•´å‹ï¼Œè¿”å›å€¼æœ¬èº«
 	template <> struct hash<bool>
 	{
 		size_t operator()(bool x) const { return static_cast<size_t>(x); }
@@ -275,7 +271,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//ÆäËûÀàĞÍ£¬²Î¿¼boost::hash£¬Í¨¹ıhash_combineºÍhash_rangeÊµÏÖ
+	//å…¶ä»–ç±»å‹ï¼Œå‚è€ƒboost::hashï¼Œé€šè¿‡hash_combineå’Œhash_rangeå®ç°
 	template<typename T> void hash_combine(size_t & seed, const T& v) {
 		hash<T> hasher;
 		seed ^= hasher(v) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
@@ -295,9 +291,9 @@ namespace Tiny_STL {
 			hash_combine(seed, *first);
 		}
 	}
-	//ÖØÔØ½ÓÊÕÁ½¸ö²ÎÊı°æ±¾µÄhash
-	//pair,vector,list,deque°æ±¾
-	//Ê¹ÓÃº¯ÊıÄ£°åÊµÏÖ
+	//é‡è½½æ¥æ”¶ä¸¤ä¸ªå‚æ•°ç‰ˆæœ¬çš„hash
+	//pair,vector,list,dequeç‰ˆæœ¬
+	//ä½¿ç”¨å‡½æ•°æ¨¡æ¿å®ç°
 	template<typename A, typename B>
 	struct hash<std::pair<A, B>> :public Binary_Func<A, B, size_t>
 	{

@@ -1,12 +1,14 @@
 #pragma once
-#ifndef FUNCTIONAL_H
-#define FUNCTIONAL_H
+#ifndef TINYSTL_FUNCTIONAL_H
+#define TINYSTL_FUNCTIONAL_H
 #include<string>
 #include<numeric>
-
+#include<vector>
+#include<list>
+#include<deque>
 namespace Tiny_STL {
 
-	//定义一元谓词参数及返回值类型
+	//unary function object base structure
 	template<typename Args, typename Result>
 	struct Unary_Func
 	{
@@ -14,7 +16,7 @@ namespace Tiny_STL {
 		typedef Result		result_type;
 	};
 
-	//定义二元谓词参数及返回值类型
+	//binary function object base structure
 	template<typename Arg_one, typename Arg_two, typename Result>
 	struct Binary_Func
 	{
@@ -23,48 +25,48 @@ namespace Tiny_STL {
 		typedef Result			result_type;
 	};
 
-	//加法
+	//Addition function
 	template<typename T>
 	struct plus :public Binary_Func<T, T, T>
 	{
 		constexpr T operator () (const T& lhs, const T& rhs) const { return lhs + rhs; }
 	};
-	//减法
+	//Subtraction function
 	template<typename T>
 	struct minus :public Binary_Func<T, T, T>
 	{
 		constexpr T operator () (const T& lhs, const T& rhs) const { return lhs - rhs; }
 	};
 
-	// 乘法
+	// Multiplication function
 	template <typename T>
 	struct multiplies :public Binary_Func<T, T, T>
 	{
 		constexpr T operator()(const T& lhs, const T& rhs) const { return lhs * rhs; }
 	};
 
-	// 除法
+	// Division function
 	template <typename T>
 	struct divides :public Binary_Func<T, T, T>
 	{
 		constexpr T operator()(const T& lhs, const T& rhs) const { return lhs / rhs; }
 	};
 
-	// 取模
+	// Modulus function
 	template <typename T>
 	struct modulus :public Binary_Func<T, T, T>
 	{
 		constexpr T operator()(const T& lhs, const T& rhs) const { return lhs % rhs; }
 	};
 
-	// 负数
+	// Negative function
 	template <typename T>
 	struct negate :public Unary_Func<T, T>
 	{
 		constexpr T operator()(const T& x) const { return -x; }
 	};
 
-	// 不等于
+	// Function object class for non-equality comparison
 	template <typename T>
 	struct not_equal_to :public Binary_Func<T, T, T>
 	{
@@ -72,8 +74,15 @@ namespace Tiny_STL {
 			return (lhs != rhs);
 		}
 	};
-
-	//大于
+	// Function object class for equality comparison
+	template <typename T>
+	struct not_equal :public Binary_Func<T, T, T>
+	{
+		constexpr bool operator()(const T& lhs, const T& rhs)const {
+			return (lhs == rhs);
+		}
+	};
+	//Function object class for greater-than inequality comparison
 	template <typename T>
 	struct greater :public Binary_Func<T, T, T>
 	{
@@ -82,7 +91,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//大于等于
+	//Function object class for greater-than-or-equal-to comparison
 	template <typename T>
 	struct greater_equal :public Binary_Func<T, T, T>
 	{
@@ -91,7 +100,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//小于
+	//Function object class for less-than inequality comparison
 	template <typename T>
 	struct less :public Binary_Func<T, T, T>
 	{
@@ -100,7 +109,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//小于等于
+	//Function object class for less-than-or-equal-to comparison
 	template <typename T>
 	struct less_equal :public Binary_Func<T, T, T>
 	{
@@ -109,7 +118,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//逻辑且
+	//Logical AND function object class
 	template <typename T>
 	struct logical_and :public Binary_Func<T, T, T>
 	{
@@ -118,7 +127,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//逻辑或
+	//Logical OR function object class
 	template <typename T>
 	struct logical_or :public Binary_Func<T, T, T>
 	{
@@ -127,7 +136,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//逻辑非
+	//Logical NOT function object class
 	template <typename T>
 	struct logical_not :public Unary_Func<T, T>
 	{
@@ -136,7 +145,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//位运算 与
+	//Bitwise AND function object class
 	template <typename T>
 	struct bit_and :public Binary_Func<T, T, T>
 	{
@@ -145,7 +154,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//位运算 或
+	//Bitwise OR function object class
 	template <typename T>
 	struct bit_or :public Binary_Func<T, T, T>
 	{
@@ -154,7 +163,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//位运算 异或
+	//Bitwise XOR function object class 
 	template <typename T>
 	struct bit_xor :public Binary_Func<T, T, T>
 	{
@@ -163,7 +172,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//位运算 非
+	//Bitwise NOT function object class 
 	template <typename T>
 	struct bit_not :public Unary_Func<T, T>
 	{
@@ -172,7 +181,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//哈希函数
+	//hash function
 	template<typename T>
 	struct hash : public Unary_Func<T, size_t>
 	{
@@ -271,7 +280,7 @@ namespace Tiny_STL {
 		}
 	};
 
-	//其他类型，参考boost::hash，通过hash_combine和hash_range实现
+	//other types，referenced from boost::hash，accomplished by function hash_combine and hash_range
 	template<typename T> void hash_combine(size_t & seed, const T& v) {
 		hash<T> hasher;
 		seed ^= hasher(v) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
@@ -291,9 +300,9 @@ namespace Tiny_STL {
 			hash_combine(seed, *first);
 		}
 	}
-	//重载接收两个参数版本的hash
-	//pair,vector,list,deque版本
-	//使用函数模板实现
+
+	//overload hash func of two prams
+	//version of pair,vector,list,deque
 	template<typename A, typename B>
 	struct hash<std::pair<A, B>> :public Binary_Func<A, B, size_t>
 	{
@@ -306,7 +315,7 @@ namespace Tiny_STL {
 	};
 
 	template<typename A, typename B>
-	struct hash<std::vector<A, B>> :public Binary_Func<A, B, size_t>
+	struct hash<std::vector<A, B>> : public Binary_Func<A, B, size_t>
 	{
 		size_t operator()(const std::vector<A, B>& val) const {
 			return hash_range(val.begin(), val.end());
@@ -355,4 +364,4 @@ namespace Tiny_STL {
 
 }
 
-#endif // !FUNCTIONAL_H
+#endif // !TINYSTL_FUNCTIONAL_H

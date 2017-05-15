@@ -1,34 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
+О╩©<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="т╢нд╪Ч">
+    <Filter Include="Х╣└Ф╨░Ф√┤Д╩╤">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="м╥нд╪Ч">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="вйт╢нд╪Ч">
+    <Filter Include="Ф╨░Ф√┤Д╩╤">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Е╓╢Ф√┤Д╩╤">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vector.h">
-      <Filter>вйт╢нд╪Ч</Filter>
+      <Filter>Ф╨░Ф√┤Д╩╤</Filter>
     </ClInclude>
     <ClInclude Include="allocator.h">
-      <Filter>вйт╢нд╪Ч</Filter>
+      <Filter>Ф╨░Ф√┤Д╩╤</Filter>
     </ClInclude>
     <ClInclude Include="alloc.h">
-      <Filter>вйт╢нд╪Ч</Filter>
+      <Filter>Ф╨░Ф√┤Д╩╤</Filter>
     </ClInclude>
     <ClInclude Include="functional.h">
-      <Filter>вйт╢нд╪Ч</Filter>
+      <Filter>Ф╨░Ф√┤Д╩╤</Filter>
     </ClInclude>
     <ClInclude Include="memory.h">
-      <Filter>вйт╢нд╪Ч</Filter>
+      <Filter>Ф╨░Ф√┤Д╩╤</Filter>
     </ClInclude>
+    <ClInclude Include="iterator.h">
+      <Filter>Ф╨░Ф√┤Д╩╤</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Filter>Х╣└Ф╨░Ф√┤Д╩╤</Filter>
+    </None>
   </ItemGroup>
 </Project>

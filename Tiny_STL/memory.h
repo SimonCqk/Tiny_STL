@@ -2,7 +2,6 @@
 #ifndef MEMORY_H
 #define MEMORY_H
 #include<functional>
-
 //include default deleter , unique_ptr and shared_ptr
 
 namespace Tiny_STL {
@@ -261,7 +260,7 @@ public:
 	//
 	void swap(shared_ptr& rhs)
 	{
-		Tiny_STL::swap(*this, rhs);
+		::swap(*this, rhs);
 	}
 	//
 	// Free the object pointed to, if unique

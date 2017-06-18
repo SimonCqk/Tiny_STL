@@ -33,6 +33,9 @@
     <ClInclude Include="iterator.h">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="reverse_iterator.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md">

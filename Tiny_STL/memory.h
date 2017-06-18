@@ -179,7 +179,7 @@ public:
 	//
 	//  Copy Ctor
 	//
-	shared_ptr(shared_ptr const& other)
+	shared_ptr(const shared_ptr& other)
 		: ptr{ other.ptr }, ref_count{ other.ref_count }, deleter{ other.deleter }
 	{
 		++*ref_count;
@@ -190,8 +190,7 @@ public:
 	shared_ptr(shared_ptr && other) noexcept
 		: ptr{ other.ptr }, ref_count{ other.ref_count }, deleter{ std::move(other.deleter) }
 	{
-		other.ptr = nullptr;
-		other.ref_count = nullptr;
+		other.ptr = other.ref_count = nullptr;
 	}
 	//
 	//  Copy assignment

@@ -41,7 +41,7 @@ namespace Tiny_STL {
 	template <typename T, typename D = default_delete<T>>
 	class unique_ptr
 	{
-		friend void swap<T, D>(unique_ptr<T, D>& lhs, unique_ptr<T, D>& rhs);
+		friend void Tiny_STL::swap<T, D>(unique_ptr<T, D>& lhs, unique_ptr<T, D>& rhs);
 
 	public:
 		// preventing copy and assignment
